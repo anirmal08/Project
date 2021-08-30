@@ -19,13 +19,13 @@
 * **Training data:**
   * Source of training data: GWU Blackboard, kylelyon@gwu.edu
   * How training data was divided into training and validation data:
-      	50% training, 
-	25% validation, 
-	25% test
+      	*50% training, 
+	*25% validation, 
+	*25% test
   * Number of rows in training and validation data:
-	Training rows: 15,000
-	Validation rows: 7,500
-	Test rows: 7,500
+	*Training rows: 15,000
+	*Validation rows: 7,500
+	*Test rows: 7,500
 
  
 * **Data dictionary:**
