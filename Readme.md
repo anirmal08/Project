@@ -1,78 +1,153 @@
-**Modeling Project Deliverables (40 pts.):**
-1. Load and analyze data: In a new Colab Jupyter notebook, load the training data and then:
-   * Determine the names of the columns in the training data (2 pts.)
-   * Determine whether any missing values exist in the training data (2 pts.)
-   * Calculate basic descriptive statistics for the data (2 pts.)
-   * Calculate a Pearson correlation matrix for the data (2 pts.)
-   * Plot histograms for all the columns in the data (2 pts.)
-2. Train a decision tree model: continuing in the same notebook:
-   * Partition the data into training, validation, and test sets
-   * Train a decision tree model (without using demographic variables) (Up to 6 pts.):
-     * Using validation-based early stopping and cross-validation (1 pt.)
-     * Display an iteration plot (1 pt.)
-     * Plot the decision tree (1 pt.)
-     * Display the test error (1 pt.)
-3. Test the model for discrimination: continuing in the same notebook:
-   * Calculate adverse impact ratios (AIR) for each applicable race (Black, Hispanic, Asian)
-     and sex (Female) group in validation data. (2 pts. for each AIR value, totalling 8 pts.)
-   * Clearly identify any problematic AIR values. (2 pts.)
-4. Remediate discovered discrimination: continuing in the same notebook:
-   * Use techniques we discussed in class (changing cutoff, model selection, in-, pre-, and
-     post-processing) to remediate any discovered bias. This means AIR should be above 0.8
-     for all protected classes, and AIR should not decrease below 0.8 for any group that was
-     originally not experiencing bias. AIR measurements should be made in validation data.
-     (Up to 8 pts.)
-   * Display the new test error. (Up to 2 pts.)
 
-Once you have completed these tasks, save your notebook to the GitHub repository for this
-project. Use “File” →”Save a Copy in Github”. (Each group only needs one repository.)
-You will be graded on your model performance and your bias remediation. Those with the
-highest test error for final models in which no protected class exhibits AIR values less than 0.8,
-will receive the highest modeling grades.
 
-**Model Card Project Deliverable (40 pts.):**
-In your new Github repository, use GitHub Markdown to transform your README.md file into a
-model card. (Each group only needs one repository.) Ensure your model card follows these
-bullet points:
-* **Basic information (6 pts.):**
-  * Group member names and emails (you may use first names and anonymous emails, for example: Patrick, patrick@acme.com)
-  * Date
-  * Model version
-  * License (please use an MIT or Apache 2.0 License)
-  * Model implementation code (link to Jupyter notebook)
+**Model Card Project Deliverable:**
+
+* **Basic information:**
+  * Person or organization developing model: Arun Rajan, arunrajan@gwu.edu,  Claudio Escudero, claudioescudero@gwu.edu, 
+    Kyle Lyon, kylelyon@gwu.edu, Elias Moreno emoreno@gwu.edu
+  * Model date: August 29, 2021
+  * Model version: 1.0
+  * License: MIT
+  * Model implementation code: DNSC_6301_Final_Project.ipynb
    * Intended Use:
-     * Intended uses
-     * Intended users
-     * Out-of-scope uses
-* **Training data (8 pts.):**
-  * Source of training data
-  * How training data was divided into training and validation data
-  * Number of rows in training and validation data
-  * Data dictionary; for each column in the training dataset include:
-    * Name
-    * Modeling role
-    * Measurement level
-    * Description
-* **Test data (5 pts.):**
-  * Source of test data
-  * Number of rows in test data
-  * State any differences in columns between training and test data
-* **Model details (8 pts.):**
-  * Columns used as inputs in the final model
-  * Column(s) used as target(s) in the final model
-  * Type of model
-  * Software used to implement the model
-  * Version of the modeling software
-  * Hyperparameters or other settings of your model
-* **Quantitative analysis (7 pts.):**
-  * Metrics used to evaluate your final model
-  * State the final values of the metrics for all data: training, validation, and test data
-  * Provide any plots related to your data or final model -- be sure to label the plots!
-* **Ethical considerations (6 pts.):**
-  * Describe potential negative impacts of using your model:
-    * Math or software problems
-    * Real-world risks: who, what, when or how
-  * Describe potential uncertainties relating to the impacts of using your model:
-    * Math or software problems
-    * Real-world risks: who, what, when or how?
-  * Describe any unexpected or results
+     * Primary intended uses: This model is an example probability of default classifier, with an example use case 
+       for determining eligibility for a credit line increase.
+     * Intended users: Students in GWU DNSC 6301 bootcamp.
+     * Out-of-scope uses: Any use beyond an educational example is out-of-scope.
+
+
+* **Training data:**
+  * Source of training data: GWU Blackboard, kylelyon@gwu.edu
+  * How training data was divided into training and validation data:
+      	50% training, 
+	25% validation, 
+	25% test
+  * Number of rows in training and validation data:
+	Training rows: 15,000
+	Validation rows: 7,500
+	Test rows: 7,500
+
+ 
+* **Data dictionary:**
+
+| Name          | Modeling Role | Measurement Level  |    Description                        |
+| ------------- |:-------------:|:------------------:| -----------------------------------:  |
+| ID            | ID            |       int          | unique row identifier                 |
+| ------------- |:-------------:|:------------------:| -----------------------------------:  |
+| LIMIT_BAL     | input         | float              | amount of previously awarded credit   |
+| ------------- |:-------------:|:------------------:| -----------------------------------:  |
+| SEX           |demographic    |   int              | 1 = male; 2 = female                  |
+|               |information    |                    |                                       |
+| ------------- |:-------------:|:------------------:| ------------------------------------: |
+| RACE          |demographic    |   int              |  1 = hispanic; 2 = black;             |
+|               |information    |                    |  3 = white; 4 = asian                 |
+| ------------- |:-------------:|:------------------:| ------------------------------------: |
+| EDUCATION     |demographic    |   int              |  1 = graduate school; 2 = university; |
+|               |information    |                    |  3 = high school; 4 = other           |
+| ------------- |:-------------:|:------------------:| ------------------------------------: |
+| MARRIAGE      |demographic    |   int              |  1 = married; 2 = single;             |
+|               |information    |                    |  3 = others                           |
+| ------------- |:-------------:|:------------------:| ------------------------------------: |
+| AGE           |demographic    |   int              |  age in years                         |
+|               |information    |                    |                                       |
+| ------------- |:-------------:|:------------------:| ------------------------------------: |
+|PAY_0,         |inputs         |   float            |  age in years                         |
+|PAY_2 - PAY_6  |               |                    |  PAY_0 = the repayment status         |
+|               |               |                    |  in September, 2005;                  |
+|               |               |                    |  PAY_2 = the repayment status         |
+|               |               |                    |  in August, 2005; ...;                |
+|               |               |                    |  PAY_6 = the repayment status         |
+|               |               |                    |  in April, 2005.                      |
+|               |               |                    |  The measurement scale for the        |
+|               |               |                    |  repayment status is: -1 = pay duly;  |
+|               |               |                    |  1 = payment delay for one month;     |
+|               |               |                    |  2 = payment delay for two months     |
+|               |               |                    |  ; ...;                               |
+|               |               |                    |  8 = payment delay for eight months;  |
+|               |               |                    |  9 = payment delay for nine months    |
+|               |               |                    |  and above                            |
+| ------------- |:-------------:|:------------------:| ------------------------------------: |
+|   BILL_AMT1   |inputs         |   float            |  amount of bill statement;            |            
+|   - BILL_AMT6 |               |                    |  BILL_AMT1 = amount of bill           |            
+|               |               |                    |  statement in September, 2005;        |       
+|               |               |                    |  BILL_AMT2 = amount of bill           |            
+|               |               |                    |  statement in August, 2005;...;       |                                                      
+|               |               |                    |  BILL_AMT6 = amount of bill           |            
+|               |               |                    |  statement in April, 2005             | 
+| ------------- |:-------------:|:------------------:| ------------------------------------: |
+|   PAY_AMT1    |inputs         |   float            |  amount of previous payment;          |               
+|               |               |                    |  statement in September, 2005;        |
+|               |               |                    |  PAY_AMT1 = amount paid in September, | 
+|               |               |                    |  2005; PAY_AMT2 = amount paid         | 
+|               |               |                    |  in August, 2005; ...;                |            
+|               |               |                    |  PAY_AMT6 = amount paid               | 
+|               |               |                    |  in April, 2005                       | 
+| ------------- |:-------------:|:------------------:| ------------------------------------: |
+|  DELINQ_NEXT  | target        |       int          |  whether a customer's next payment    |  
+|               |               |                    |  is delinquent (late),                | 
+|               |               |                    |  1 = late; 0 = on-time                | 
+|               |               |                    |                                       | 
+
+
+
+
+* **Test Data:**
+*Source of test data: GWU BlackBoard / 202103_Analytics Edge and Data Ethics_DNSC_6301_10 / Electronic Reserves
+*Number of rows in test data: 7500 rows
+*State any differences in columns between training  and test data: None
+
+
+
+* **Model details:** 
+    * Columns used as inputs in the final model
+    	LIMIT_BAL,PAY_0, PAY_2:PAY_6, BILL_AMT1:BILL_AMT6, PAY_AMT1:PAY_AMT6
+    *Column(s) used as target(s) in the final model
+	DELINQ_NEXT 
+*Type of model 
+	Decision Tree
+*Software used to implement the model
+	Python in Jupyter Notebook
+*Version of the modeling software
+	3.7.11
+*Hyperparameters or other settings of your model
+	Discrimination, Mitigation
+
+* **Quantitative Analysis**
+*○ Metrics used to evaluate your final model
+	AIR
+*○ State the final values of the metrics for all data: training, validation, and test data 
+	Training AUC: 0.78
+	Validation AUC: 0.75
+	Test AUC: 0.74
+	Asian-to-White AIR: 1.00
+	Black-to-White AIR: 0.85
+	Female-to-Male AIR: 1.02
+	Hispanic-to-White AIR: 0.83
+*○ Provide any plots related to your data or final model -- be sure to label the plots!
+
+
+
+
+*Quantitative Analysis
+	Bias remediation
+	Accuracy
+	Variable importance
+	Average Impact Ratio test
+	Model performance
+	Fairness
+
+
+*Ethical Considerations
+*○ Describe potential negative impacts of using your model:
+	■ Math or software problems
+	Our model is not prepared to handle missing data. If missing data is presented, it would fail and risk becoming biased. There may also be syntax errors that would damage the code.  
+	■ Real-world risks: who, what, when or how 
+	There may be a real world risk of favoring a certain race over the other, or gender over the other. This happens due to discrimination and mitigation. 
+	○ Describe potential uncertainties relating to the impacts of using your model: 
+	■ Math or software problems
+	The software can continue to provide data that is incorrect and if it is not properly recognized and fixed this can go on and be built into the code.
+	■ Real-world risks: who, what, when or how? 
+	Risks include biased decision making with regards to the extension of credit line to     customers. This can happen if the code is manipulated or there is biased data entered into the model. There is a risk also that the original code was developed with unrecognized bias. 
+	○ Describe any unexpected or results
+	None
+
