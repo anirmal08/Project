@@ -32,9 +32,9 @@
 
 | Name          | Modeling Role | Measurement Level  |    Description                        |
 | ------------- |:-------------:|:------------------:| -----------------------------------:  |
-| ID            | ID            |       int          | unique row identifier                 |
+| ID            | ID            |    int             | unique row identifier                 |
 | ------------- |:-------------:|:------------------:| -----------------------------------:  |
-| LIMIT_BAL     | input         | float              | amount of previously awarded credit   |
+| LIMIT_BAL     | input         |   float            | amount of previously awarded credit   |
 | ------------- |:-------------:|:------------------:| -----------------------------------:  |
 | SEX           |demographic    |   int              | 1 = male; 2 = female                  |
 |               |information    |                    |                                       |
@@ -51,9 +51,9 @@
 | AGE           |demographic    |   int              |  age in years                         |
 |               |information    |                    |                                       |
 | ------------- |:-------------:|:------------------:| ------------------------------------: |
-|PAY_0,         |inputs         |   float            |  age in years                         |
-|PAY_2 - PAY_6  |               |                    |  PAY_0 = the repayment status         |
-|               |               |                    |  in September, 2005;                  |
+|  PAY_0,       |inputs         |   float            |  age in years                         |
+|   PAY_2       |               |                    |  PAY_0 = the repayment status         |
+|    - PAY_6    |               |                    |  in September, 2005;                  |
 |               |               |                    |  PAY_2 = the repayment status         |
 |               |               |                    |  in August, 2005; ...;                |
 |               |               |                    |  PAY_6 = the repayment status         |
@@ -76,14 +76,14 @@
 |               |               |                    |  statement in April, 2005             | 
 | ------------- |:-------------:|:------------------:| ------------------------------------: |
 |   PAY_AMT1    |inputs         |   float            |  amount of previous payment;          |               
-|               |               |                    |  statement in September, 2005;        |
+|   - PAY_AMT6  |               |                    |  statement in September, 2005;        |
 |               |               |                    |  PAY_AMT1 = amount paid in September, | 
 |               |               |                    |  2005; PAY_AMT2 = amount paid         | 
 |               |               |                    |  in August, 2005; ...;                |            
 |               |               |                    |  PAY_AMT6 = amount paid               | 
 |               |               |                    |  in April, 2005                       | 
 | ------------- |:-------------:|:------------------:| ------------------------------------: |
-|  DELINQ_NEXT  | target        |       int          |  whether a customer's next payment    |  
+|  DELINQ_NEXT  | target        |     int            |  whether a customer's next payment    |  
 |               |               |                    |  is delinquent (late),                | 
 |               |               |                    |  1 = late; 0 = on-time                | 
 |               |               |                    |                                       | 
@@ -100,54 +100,53 @@
 
 * **Model details:** 
     * Columns used as inputs in the final model
-    	LIMIT_BAL,PAY_0, PAY_2:PAY_6, BILL_AMT1:BILL_AMT6, PAY_AMT1:PAY_AMT6
+    	*LIMIT_BAL,PAY_0, PAY_2:PAY_6, BILL_AMT1:BILL_AMT6, PAY_AMT1:PAY_AMT6
     *Column(s) used as target(s) in the final model
-	DELINQ_NEXT 
+	*DELINQ_NEXT 
 *Type of model 
-	Decision Tree
+	*Decision Tree
 *Software used to implement the model
-	Python in Jupyter Notebook
+	*Python in Jupyter Notebook
 *Version of the modeling software
-	3.7.11
+	*3.7.11
 *Hyperparameters or other settings of your model
-	Discrimination, Mitigation
+	*Discrimination, Mitigation
 
 * **Quantitative Analysis**
 *○ Metrics used to evaluate your final model
-	AIR
+	*AIR
 *○ State the final values of the metrics for all data: training, validation, and test data 
-	Training AUC: 0.78
-	Validation AUC: 0.75
-	Test AUC: 0.74
-	Asian-to-White AIR: 1.00
-	Black-to-White AIR: 0.85
-	Female-to-Male AIR: 1.02
-	Hispanic-to-White AIR: 0.83
+	*Training AUC: 0.78
+	*Validation AUC: 0.75
+	*Test AUC: 0.74
+	*Asian-to-White AIR: 1.00
+	*Black-to-White AIR: 0.85
+	*Female-to-Male AIR: 1.02
+	*Hispanic-to-White AIR: 0.83
 *○ Provide any plots related to your data or final model -- be sure to label the plots!
 
 
 
 
-*Quantitative Analysis
-	Bias remediation
-	Accuracy
-	Variable importance
-	Average Impact Ratio test
-	Model performance
-	Fairness
+* **Quantitative Analysis**
+	*Bias remediation
+	*Accuracy
+	*Variable importance
+	*Average Impact Ratio test
+	*Model performance
+	*Fairness
 
 
-*Ethical Considerations
+* **Ethical Considerations**
 *○ Describe potential negative impacts of using your model:
-	■ Math or software problems
-	Our model is not prepared to handle missing data. If missing data is presented, it would fail and risk becoming biased. There may also be syntax errors that would damage the code.  
-	■ Real-world risks: who, what, when or how 
-	There may be a real world risk of favoring a certain race over the other, or gender over the other. This happens due to discrimination and mitigation. 
-	○ Describe potential uncertainties relating to the impacts of using your model: 
-	■ Math or software problems
-	The software can continue to provide data that is incorrect and if it is not properly recognized and fixed this can go on and be built into the code.
-	■ Real-world risks: who, what, when or how? 
-	Risks include biased decision making with regards to the extension of credit line to     customers. This can happen if the code is manipulated or there is biased data entered into the model. There is a risk also that the original code was developed with unrecognized bias. 
-	○ Describe any unexpected or results
-	None
+	*■ Math or software problems
+	*Our model is not prepared to handle missing data. If missing data is presented, it would fail and risk becoming biased. There may also be syntax errors that would damage the code.  
+	*■ Real-world risks: who, what, when or how 
+	*There may be a real world risk of favoring a certain race over the other, or gender over the other. This happens due to discrimination and mitigation. 
+	*○ Describe potential uncertainties relating to the impacts of using your model: 
+	*■ Math or software problems
+	*The software can continue to provide data that is incorrect and if it is not properly recognized and fixed this can go on and be built into the code.
+	*■ Real-world risks: who, what, when or how? 
+	*Risks include biased decision making with regards to the extension of credit line to     customers. This can happen if the code is manipulated or there is biased data entered into the model. There is a risk also that the original code was developed with unrecognized bias. 
+	*○ Describe any unexpected or results: None
 
