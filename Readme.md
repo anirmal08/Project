@@ -3,14 +3,14 @@
 ### Basic information:
 
 * **Person or organization developing model:** 
-	* Arun Rajan, arunrajan@gwu.edu,  
-	* Claudio Escudero, claudioescudero@gwu.edu,
-	* Kyle Lyon, kylelyon@gwu.edu,
-	* Elias Moreno emoreno@gwu.edu
+	* Arun Rajan, `arunrajan@gwu.edu`,  
+	* Claudio Escudero, `claudioescudero@gwu.edu`,
+	* Kyle Lyon, `kylelyon@gwu.edu`,
+	* Elias Moreno, `emoreno@gwu.edu`
 * **Model date:** August 29, 2021
 * **Model version:** 1.0
 * **License:** MIT
-* **Model implementation code:** DNSC_6301_Final_Project.ipynb
+* **Model implementation code:** [DNSC_6301_Final_Project.ipynb](https://github.com/anirmal08/Project/blob/main/DNSC_6301_Final_Project.ipynb)
 
 ### Intended Use:
 * **Primary intended uses:** This model is an example probability of default classifier, with an example use case 
@@ -22,7 +22,7 @@
 ### Training data:
 * **Source of training data:** GWU Blackboard, kylelyon@gwu.edu
 * **How training data was divided into training and validation data:**
-      	* 50% training, 
+	* 50% training, 
 	* 25% validation, 
 	* 25% test
 * **Number of rows in training and validation data:**
@@ -49,61 +49,49 @@
 
 
 ### Test Data:
-*Source of test data: GWU BlackBoard / 202103_Analytics Edge and Data Ethics_DNSC_6301_10 / Electronic Reserves
-*Number of rows in test data: 7500 rows
-*State any differences in columns between training  and test data: None
+* Source of test data: GWU BlackBoard / 202103_Analytics Edge and Data Ethics_DNSC_6301_10 / Electronic Reserves
+* Number of rows in test data: 7500
+* State any differences in columns between training  and test data: None
 
 
 
-* **Model details:** 
-    * Columns used as inputs in the final model
-    	*LIMIT_BAL,PAY_0, PAY_2:PAY_6, BILL_AMT1:BILL_AMT6, PAY_AMT1:PAY_AMT6
-    *Column(s) used as target(s) in the final model
-	*DELINQ_NEXT 
-*Type of model 
-	*Decision Tree
-*Software used to implement the model
-	*Python in Jupyter Notebook
-*Version of the modeling software
-	*3.7.11
-*Hyperparameters or other settings of your model
-	*Discrimination, Mitigation
+### Model details:
+* **Columns used as inputs in the final model:** LIMIT_BAL,PAY_0, PAY_2:PAY_6, BILL_AMT1:BILL_AMT6, PAY_AMT1:PAY_AMT6
+* **Column(s) used as target(s) in the final model:** DELINQ_NEXT 
+* **Type of model:** Decision Tree
+* **Software used to implement the model:** Python in Jupyter Notebook
+* **Version of the modeling software:** 3.7.11
+* **Hyperparameters or other settings of your model:** `DecisionTreeClassifier(...)`
 
-* **Quantitative Analysis**
-*○ Metrics used to evaluate your final model
-	*AIR
-*○ State the final values of the metrics for all data: training, validation, and test data 
-	*Training AUC: 0.78
-	*Validation AUC: 0.75
-	*Test AUC: 0.74
-	*Asian-to-White AIR: 1.00
-	*Black-to-White AIR: 0.85
-	*Female-to-Male AIR: 1.02
-	*Hispanic-to-White AIR: 0.83
-*○ Provide any plots related to your data or final model -- be sure to label the plots!
+### Quantitative Analysis:
+* **Metrics used to evaluate your final model:**
+	* AIR
+	* Bias remediation
+	* Accuracy
+	* Variable importance
+	* Average Impact Ratio test
+	* Model performance
+	* Fairness
+* **State the final values of the metrics for all data:** Training, validation, and test data 
+	* Training AUC: 0.78
+	* Validation AUC: 0.75
+	* Test AUC: 0.74
+	* Asian-to-White AIR: 1.00
+	* Black-to-White AIR: 0.85
+	* Female-to-Male AIR: 1.02
+	* Hispanic-to-White AIR: 0.83
+* **Plots:**
 
-
-
-
-* **Quantitative Analysis**
-	*Bias remediation
-	*Accuracy
-	*Variable importance
-	*Average Impact Ratio test
-	*Model performance
-	*Fairness
-
-
-* **Ethical Considerations**
-*○ Describe potential negative impacts of using your model:
-	*■ Math or software problems
-	*Our model is not prepared to handle missing data. If missing data is presented, it would fail and risk becoming biased. There may also be syntax errors that would damage the code.  
-	*■ Real-world risks: who, what, when or how 
-	*There may be a real world risk of favoring a certain race over the other, or gender over the other. This happens due to discrimination and mitigation. 
-	*○ Describe potential uncertainties relating to the impacts of using your model: 
-	*■ Math or software problems
-	*The software can continue to provide data that is incorrect and if it is not properly recognized and fixed this can go on and be built into the code.
-	*■ Real-world risks: who, what, when or how? 
-	*Risks include biased decision making with regards to the extension of credit line to     customers. This can happen if the code is manipulated or there is biased data entered into the model. There is a risk also that the original code was developed with unrecognized bias. 
-	*○ Describe any unexpected or results: None
+### Ethical Considerations:
+* **Describe potential negative impacts of using your model:**
+	* Math or software problems
+	* Our model is not prepared to handle missing data. If missing data is presented, it would fail and risk becoming biased. There may also be syntax errors that would damage the code.  
+* **Real-world risks: who, what, when or how**
+	* There may be a real world risk of favoring a certain race over the other, or gender over the other. This happens due to discrimination and mitigation.
+	* Risks include biased decision making with regards to the extension of credit line to     customers. This can happen if the code is manipulated or there is biased data entered into the model. There is a risk also that the original code was developed with unrecognized bias. 
+* **Describe potential uncertainties relating to the impacts of using your model:**
+	* Math or software problems
+	* The software can continue to provide data that is incorrect and if it is not properly recognized and fixed this can go on and be built into the code.
+* **Describe any unexpected or results:** 
+	* None
 
