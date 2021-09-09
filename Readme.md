@@ -59,8 +59,8 @@
 * **Columns used as inputs in the final model:** LIMIT_BAL,PAY_0, PAY_2:PAY_6, BILL_AMT1:BILL_AMT6, PAY_AMT1:PAY_AMT6
 * **Column(s) used as target(s) in the final model:** DELINQ_NEXT 
 * **Type of model:** Decision Tree
-* **Software used to implement the model:** Python in Jupyter Notebook
-* **Version of the modeling software:** 3.7.11
+* **Software used to implement the model:** Python, scikit-learn
+* **Version of the modeling software:** 0.22.2.post1
 * **Hyperparameters or other settings of your model:** `DecisionTreeClassifier(...)`
 
 ### Quantitative Analysis:
