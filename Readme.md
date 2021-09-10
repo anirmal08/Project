@@ -61,7 +61,7 @@
 * **Type of model:** Decision Tree
 * **Software used to implement the model:** Google Colab
 * **Version of the modeling software:** Google Colab with Python 3.6.9
-* **Hyperparameters or other settings of your model:** `DecisionTreeClassifier(...) Test Size, Tree Depth, AIR Ratio and Cut Off - change to 18%
+* **Hyperparameters or other settings of your model:** Test Size, Tree Depth, AIR Ratio and Cut Off - change to 18%
 
 ### Quantitative Analysis:
 * **Metrics used to evaluate your final model:**
