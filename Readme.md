@@ -60,7 +60,9 @@
 * **Column(s) used as target(s) in the final model:** DELINQ_NEXT 
 * **Type of model:** Decision Tree
 * **Software used to implement the model:** Google Colab
-* **Version of the modeling software:** Google Colab with Python 3.6.9
+* **Version of the modeling software:** 
+	* scikit-learn
+	* Google Colab with Python 3.6.9
 * **Hyperparameters or other settings of your model:** Test Size, Tree Depth, Adverse Impact Ratio - AIR (0.8) and Cut Off - change to 18%
 
 ### Quantitative Analysis:
